@@ -36,3 +36,13 @@ def p20():
     return np.vstack((p6(), twelve(GR-1)))
 
 Plato5 = [p4, p6, p8, p12, p20]
+
+def faces(n: int, vertices):
+  """Compute (n-fold) faces for vertices"""
+  for vs in itertools.permutations(range(len(vertices)), n):
+    if vs[0] != min(vs) or vs[1] > vs[-1]:
+      continue
+    pts = vertices[list(vs)]
+    ls = np.linalg.norm(zz := pts - np.roll(pts, 1, axis=0), axis=1)
+    if ls.max() < ls.min() * 1.001:
+      yield vs

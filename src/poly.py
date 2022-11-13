@@ -43,6 +43,10 @@ def faces(n: int, vertices):
     if vs[0] != min(vs) or vs[1] > vs[-1]:
       continue
     pts = vertices[list(vs)]
-    ls = np.linalg.norm(zz := pts - np.roll(pts, 1, axis=0), axis=1)
-    if ls.max() < ls.min() * 1.001:
-      yield vs
+    edges = pts - np.roll(pts, 1, axis=0)
+    ls = np.linalg.norm(edges, axis=1)
+    if ls.max() > ls.min() * 1.001:
+      continue
+    if np.linalg.matrix_rank(edges) > 2:
+      continue
+    yield vs

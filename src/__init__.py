@@ -1,1 +1,3 @@
-from .say import *
+from .qt import main
+
+main()

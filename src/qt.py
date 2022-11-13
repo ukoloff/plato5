@@ -8,6 +8,16 @@ class Win(QMainWindow):
         QMainWindow.__init__(self)
 
         self.setWindowTitle('Amicus Plato sed...')
+        self.startPos()
+        self.show()
+
+    def startPos(self):
+        R = QDesktopWidget().availableGeometry()
+        c = R.center()
+        R.setSize(R.size() / 1.618)
+        R.moveCenter(c)
+        self.move(R.topLeft())
+        self.resize(R.size())
 
 
 def main():
@@ -18,5 +28,4 @@ def main():
 
     app = QApplication(sys.argv)
     win = Win()
-    win.show()
     sys.exit(app.exec())

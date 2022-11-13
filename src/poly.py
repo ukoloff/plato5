@@ -34,3 +34,5 @@ def p12():
 def p20():
     """Dodecahedron vertices"""
     return np.vstack((p6(), twelve(GR-1)))
+
+Plato5 = [p4, p6, p8, p12, p20]

@@ -50,3 +50,7 @@ def faces(n: int, vertices):
     if np.linalg.matrix_rank(edges) > 2:
       continue
     yield vs
+
+def edges(vertices):
+  D = np.triu(np.linalg.norm(vertices[None] - vertices[:, None], axis=-1), 1)
+  return np.array(np.nonzero(abs(D - D[0, 1:].min()) < 1e-3)).T

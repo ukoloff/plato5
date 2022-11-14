@@ -6,5 +6,4 @@ for p in Plato5:
     print(p.__doc__)
     v = p()
     print(v)
-
-print(*faces(4, p6()))
+    print(edges(v).T)

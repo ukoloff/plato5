@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "014dc47c036d858dd97de6b58073189cc8d43735bdcef038139255f7353ec2b7"
+            "sha256": "55ab4135e18806552400827e513354b4d21d9fe22512a140f9f5fbbd7a1f9c10"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -123,6 +123,14 @@
             ],
             "markers": "python_version >= '3.6'",
             "version": "==2.9.1"
+        },
+        "pyqt5designer": {
+            "hashes": [
+                "sha256:9d22b4f0f47d81859f253850f2a2d66e29011b4a380541b6a891e035a0914769",
+                "sha256:af4356b77412807d0fe4013737a9025fec3d5cd765bea4eff9a48071c25313ea"
+            ],
+            "index": "pypi",
+            "version": "==5.14.1"
         },
         "tomli": {
             "hashes": [

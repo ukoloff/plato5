@@ -10,6 +10,7 @@ pyopengl = "*"
 
 [dev-packages]
 autopep8 = "*"
+pyqt5designer = "*"
 
 [requires]
 python_version = ">=3.8"

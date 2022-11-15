@@ -2,10 +2,13 @@ import sys
 from os import environ
 from PyQt5.QtWidgets import QApplication, QMainWindow, QDesktopWidget
 
+from .gl import GL
 
-class Win(QMainWindow):
+class Win(QMainWindow, GL):
     def __init__(self):
         super().__init__()
+
+        self.initGL()
 
         self.setWindowTitle('Amicus Plato sed...')
         self.startPos()

@@ -30,5 +30,5 @@ def main():
     environ["QT_SCALE_FACTOR"] = "1"
 
     app = QApplication(sys.argv)
-    win = Win()
+    win = [Win() for i in range(5)]
     sys.exit(app.exec())

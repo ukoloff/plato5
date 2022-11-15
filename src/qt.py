@@ -2,9 +2,9 @@ import sys
 from os import environ
 from PyQt5.QtWidgets import QApplication, QMainWindow, QDesktopWidget
 
-from .gl import GL
+from .gl import GLX
 
-class Win(QMainWindow, GL):
+class Win(QMainWindow, GLX):
     def __init__(self):
         super().__init__()
 

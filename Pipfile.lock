@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "9355a00e9b81284f579453a40f686bef3c822c491dc122eff2e116fb44840f1f"
+            "sha256": "014dc47c036d858dd97de6b58073189cc8d43735bdcef038139255f7353ec2b7"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -49,6 +49,15 @@
             ],
             "index": "pypi",
             "version": "==1.23.4"
+        },
+        "pyopengl": {
+            "hashes": [
+                "sha256:57c597d989178e1413002df6b923619f6d29807501dece1c60cc6f12c0c8e8a7",
+                "sha256:8ea6c8773927eda7405bffc6f5bb93be81569a7b05c8cac50cd94e969dce5e27",
+                "sha256:a7139bc3e15d656feae1f7e3ef68c799941ed43fadc78177a23db7e946c20738"
+            ],
+            "index": "pypi",
+            "version": "==3.1.6"
         },
         "pyqt5": {
             "hashes": [
@@ -98,5 +107,30 @@
             "version": "==12.11.0"
         }
     },
-    "develop": {}
+    "develop": {
+        "autopep8": {
+            "hashes": [
+                "sha256:8b1659c7f003e693199f52caffdc06585bb0716900bbc6a7442fd931d658c077",
+                "sha256:ad924b42c2e27a1ac58e432166cc4588f5b80747de02d0d35b1ecbd3e7d57207"
+            ],
+            "index": "pypi",
+            "version": "==2.0.0"
+        },
+        "pycodestyle": {
+            "hashes": [
+                "sha256:2c9607871d58c76354b697b42f5d57e1ada7d261c261efac224b664affdc5785",
+                "sha256:d1735fc58b418fd7c5f658d28d943854f8a849b01a5d0a1e6f3f3fdd0166804b"
+            ],
+            "markers": "python_version >= '3.6'",
+            "version": "==2.9.1"
+        },
+        "tomli": {
+            "hashes": [
+                "sha256:939de3e7a6161af0c887ef91b7d41a53e7c5a1ca976325f429cb46ea9bc30ecc",
+                "sha256:de526c12914f0c550d15924c62d72abc48d6fe7364aa87328337a31007fe8a4f"
+            ],
+            "markers": "python_version >= '3.7'",
+            "version": "==2.0.1"
+        }
+    }
 }

@@ -5,7 +5,7 @@ from PyQt5.QtWidgets import QApplication, QMainWindow, QDesktopWidget
 
 class Win(QMainWindow):
     def __init__(self):
-        QMainWindow.__init__(self)
+        super().__init__()
 
         self.setWindowTitle('Amicus Plato sed...')
         self.startPos()

@@ -2,6 +2,9 @@ from PyQt5.QtWidgets import QOpenGLWidget, QDesktopWidget
 from OpenGL import GL
 from numpy.random import rand
 
+#
+# See: https://habr.com/ru/post/310790/
+#
 class GLX:
     def initGL(self):
         GL = QOpenGLWidget(self)

@@ -1,4 +1,5 @@
 from PyQt5.QtWidgets import QOpenGLWidget, QDesktopWidget
+from PyQt5.QtCore import QTimer
 from OpenGL import GL
 from numpy.random import rand
 
@@ -8,12 +9,14 @@ from numpy.random import rand
 class GLX:
     def initGL(self):
         GL = QOpenGLWidget(self)
+        self.gl = GL
         self.setCentralWidget(GL)
         GL.initializeGL = self.iGL
         GL.paintGL = self.paintGL
 
         self.Triangle()
         self.Pos()
+        self.Timer()
 
     def Triangle(self):
         self.Vs = rand(3, 2) * 2 - 1
@@ -25,6 +28,16 @@ class GLX:
         W = R.size() - S
         self.resize(S)
         self.move(*(rand(2) * [W.width(), W.height()]))
+
+    def Timer(self):
+        timer = QTimer()
+        timer.timeout.connect(self.tick)
+        timer.start(rand(1)[0] * 2000 + 1000)
+        self.timer = timer
+
+    def tick(self):
+        self.Triangle()
+        self.gl.update()
 
     def iGL(self):
         GL.glClearColor(0.5, 0.5, 0.5, 1.0)

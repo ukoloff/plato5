@@ -32,7 +32,7 @@ class GLX:
     def Timer(self):
         timer = QTimer()
         timer.timeout.connect(self.tick)
-        timer.start(rand(1)[0] * 2000 + 1000)
+        timer.start(rand() * 2000 + 1000)
         self.timer = timer
 
     def tick(self):

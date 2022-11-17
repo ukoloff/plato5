@@ -12,7 +12,7 @@ def p4():
 
 def p6():
     """Cube vertices"""
-    return np.array([*itertools.product(range(2), repeat=3)]) * 2 - 1
+    return np.array([*itertools.product(range(2), repeat=3)], float) * 2 - 1
 
 
 def p8():

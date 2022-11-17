@@ -48,12 +48,14 @@ def faces_gen(edges):
     """Compute faces for edges"""
     Es = {}
     for a, b in edges:
+        a = int(a)
+        b = int(b)
         if a not in Es:
-            Es[a] = []
-        Es[a].append(b)
+            Es[a] = set()
+        Es[a].add(b)
         if b not in Es:
-            Es[b] = []
-        Es[b].append(a)
+            Es[b] = set()
+        Es[b].add(a)
 
     E = len(edges)
     V = len(Es)
@@ -62,19 +64,22 @@ def faces_gen(edges):
     Fi = 2 * E // F
 
     face = []
+    faceset = set()
 
     def add(v):
         """
         Append a vertex to a face up to Vi ones
         """
         face.append(v)
+        faceset.add(v)
         if len(face) < Fi:
             for z in Es[face[-1]]:
-                if z > face[0]:
+                if z > face[0] and z not in faceset:
                     yield from add(z)
         elif v > face[1] and face[0] in Es[v]:
             yield face[:]
         face.pop()
+        faceset.remove(v)
 
     for v in Es.keys():
         yield from add(v)

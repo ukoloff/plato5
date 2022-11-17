@@ -37,20 +37,18 @@ def p20():
 
 Plato5 = [p4, p6, p8, p12, p20]
 
-def faces(n: int, vertices):
-  """Compute (n-fold) faces for vertices"""
-  for vs in itertools.permutations(range(len(vertices)), n):
-    if vs[0] != min(vs) or vs[1] > vs[-1]:
-      continue
-    pts = vertices[list(vs)]
-    edges = pts - np.roll(pts, 1, axis=0)
-    ls = np.linalg.norm(edges, axis=1)
-    if ls.max() > ls.min() * 1.001:
-      continue
-    if np.linalg.matrix_rank(edges) > 2:
-      continue
-    yield vs
-
 def edges(vertices):
   D = np.triu(np.linalg.norm(vertices[None] - vertices[:, None], axis=-1), 1)
   return np.array(np.nonzero(abs(D - D[0, 1:].min()) < 1e-3)).T
+
+def faces(edges):
+  """Compute faces for edges"""
+  Es = {}
+  for a, b in edges:
+    if a not in Es:
+      Es[a] = []
+    Es[a].append(b)
+    if b not in Es:
+      Es[b] = []
+    Es[b].append(a)
+  print(Es)

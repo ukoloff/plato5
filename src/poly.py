@@ -35,20 +35,47 @@ def p20():
     """Dodecahedron vertices"""
     return np.vstack((p6(), twelve(GR-1)))
 
+
 Plato5 = [p4, p6, p8, p12, p20]
 
+
 def edges(vertices):
-  D = np.triu(np.linalg.norm(vertices[None] - vertices[:, None], axis=-1), 1)
-  return np.array(np.nonzero(abs(D - D[0, 1:].min()) < 1e-3)).T
+    D = np.triu(np.linalg.norm(vertices[None] - vertices[:, None], axis=-1), 1)
+    return np.array(np.nonzero(abs(D - D[0, 1:].min()) < 1e-3)).T
+
 
 def faces(edges):
-  """Compute faces for edges"""
-  Es = {}
-  for a, b in edges:
-    if a not in Es:
-      Es[a] = []
-    Es[a].append(b)
-    if b not in Es:
-      Es[b] = []
-    Es[b].append(a)
-  print(Es)
+    """Compute faces for edges"""
+    Es = {}
+    for a, b in edges:
+        if a not in Es:
+            Es[a] = []
+        Es[a].append(b)
+        if b not in Es:
+            Es[b] = []
+        Es[b].append(a)
+
+    E = len(edges)
+    V = len(Es)
+    F = E - V + 2
+    # Face's size
+    Fi = 2 * E // F
+
+    face = []
+
+    def add(v):
+        """
+        Append a vertex to a face up to Vi ones
+        """
+        face.append(v)
+        if len(face) >= Fi:
+            if v > face[1] and face[0] in Es[v]:
+                yield face[:]
+        else:
+            for z in Es[face[-1]]:
+                if z > face[0]:
+                    yield from add(z)
+        face.pop()
+
+    for v in Es.keys():
+        yield from add(v)

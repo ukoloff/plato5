@@ -9,3 +9,4 @@ for p in Plato5:
     e = edges(v)
     print(e.T)
     f = faces(e)
+    print(*f)

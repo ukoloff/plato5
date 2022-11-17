@@ -44,7 +44,7 @@ def edges(vertices):
     return np.array(np.nonzero(abs(D - D[0, 1:].min()) < 1e-3)).T
 
 
-def faces(edges):
+def faces_gen(edges):
     """Compute faces for edges"""
     Es = {}
     for a, b in edges:
@@ -79,3 +79,8 @@ def faces(edges):
 
     for v in Es.keys():
         yield from add(v)
+
+
+def faces(edges):
+    """Compute faces for edges"""
+    return np.array([*faces_gen(edges)])

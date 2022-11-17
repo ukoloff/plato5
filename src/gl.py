@@ -27,12 +27,12 @@ class GLX:
         S = R.size() / 3
         W = R.size() - S
         self.resize(S)
-        self.move(*(rand(2) * [W.width(), W.height()]))
+        self.move(*(int(x*rand())for x in (W.width(), W.height())))
 
     def Timer(self):
         timer = QTimer()
         timer.timeout.connect(self.tick)
-        timer.start(rand() * 2000 + 1000)
+        timer.start(int(rand() * 2000 + 1000))
         self.timer = timer
 
     def tick(self):

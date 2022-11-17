@@ -68,13 +68,12 @@ def faces_gen(edges):
         Append a vertex to a face up to Vi ones
         """
         face.append(v)
-        if len(face) >= Fi:
-            if v > face[1] and face[0] in Es[v]:
-                yield face[:]
-        else:
+        if len(face) < Fi:
             for z in Es[face[-1]]:
                 if z > face[0]:
                     yield from add(z)
+        elif v > face[1] and face[0] in Es[v]:
+            yield face[:]
         face.pop()
 
     for v in Es.keys():

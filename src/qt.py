@@ -4,6 +4,7 @@ from PyQt5.QtWidgets import QApplication, QMainWindow
 
 from .gl import GLX
 
+
 class Win(QMainWindow, GLX):
     def __init__(self):
         super().__init__()

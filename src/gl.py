@@ -6,6 +6,8 @@ from numpy.random import rand
 #
 # See: https://habr.com/ru/post/310790/
 #
+
+
 class GLX:
     def initGL(self):
         GL = QOpenGLWidget(self)

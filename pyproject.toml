@@ -9,7 +9,13 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.8"
 numpy = "^1.23.5"
+pyqt5 = "^5.15.7"
+pyopengl = "^3.1.6"
+pyglm = "^2.6.0"
 
+
+[tool.poetry.group.dev.dependencies]
+pyqt5designer = "^5.14.1"
 
 [build-system]
 requires = ["poetry-core"]

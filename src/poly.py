@@ -88,3 +88,23 @@ def faces_gen(edges):
 def faces(edges):
     """Compute faces for edges"""
     return np.array([*faces_gen(edges)])
+
+
+class Poly:
+    def __init__(self, N: int):
+        p = Plato5[N]
+        self.name = p.__doc__.split()[0]
+        self.v = v = p()
+        self.e = e = edges(v)
+        self.f = faces(e)
+        self.scale()
+
+    def scale(self):
+        self.v -= self.v.mean(axis=0)
+        self.v /= np.linalg.norm(self.v, axis=-1).max()
+
+    def __str__(self):
+        return f"""{self.name}:\t{
+            self.v.shape[0]} - {self.e.shape[0]} + {self.f.shape[0]} = {
+            self.v.shape[0] - self.e.shape[0]+ self.f.shape[0]
+            }"""

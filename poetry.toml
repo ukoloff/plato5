@@ -3,3 +3,4 @@ in-project = true
 
 [virtualenvs.options]
 system-site-packages = false
+# Reset to true in .venv/pyvenv.cfg

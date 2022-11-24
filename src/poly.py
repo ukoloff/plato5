@@ -108,3 +108,27 @@ class Poly:
             self.v.shape[0]} - {self.e.shape[0]} + {self.f.shape[0]} = {
             self.v.shape[0] - self.e.shape[0]+ self.f.shape[0]
             }"""
+
+    def edge1(self):
+        """Make all edges of length=1"""
+        self.v /= np.linalg.norm(self.v[1:] - self.v[0], axis=-1).min()
+
+    def as_model(self, file):
+        print(self.v.shape[0], file=file)
+        print(self.e.shape[0], file=file)
+        print(self.f.shape[0], file=file)
+        for p in self.v:
+            print(*p, file=file)
+        for p in self.e:
+            print(*p, file=file)
+        for p in self.f:
+            print(*p, file=file)
+
+if __name__ == '__main__':
+    for i in range(5):
+        x = Poly(i)
+        with open(f"{x.name}R1.txt", "w") as f:
+            x.as_model(f)
+        x.edge1()
+        with open(f"{x.name}E1.txt", "w") as f:
+            x.as_model(f)

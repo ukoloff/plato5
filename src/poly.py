@@ -114,15 +114,14 @@ class Poly:
         self.v /= np.linalg.norm(self.v[1:] - self.v[0], axis=-1).min()
 
     def as_model(self, file):
-        print(self.v.shape[0], file=file)
-        print(self.e.shape[0], file=file)
-        print(self.f.shape[0], file=file)
-        for p in self.v:
-            print(*p, file=file)
-        for p in self.e:
-            print(*p, file=file)
-        for p in self.f:
-            print(*p, file=file)
+        items = [self.v, self.e, self.f]
+        for item in items:
+            print(item.shape[0], file=file)
+
+        for item in items:
+            for p in item:
+                print(*p, file=file)
+
 
 if __name__ == '__main__':
     for i in range(5):
